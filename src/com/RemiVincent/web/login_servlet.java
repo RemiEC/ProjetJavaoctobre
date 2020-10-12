@@ -3,6 +3,7 @@ package com.RemiVincent.web;
 import java.io.IOException;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,13 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-/**
- * Servlet implementation class loginServlet
- */
-@WebServlet("/login")
-public class loginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
+@WebServlet("/login")
+public class login_servlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
 	private ProjetDBUtil projetDBUtil;
 
 	@Resource(name="jdbc/studentdb")
@@ -24,22 +23,24 @@ public class loginServlet extends HttpServlet {
 		
 	@Override
 	public void init() throws ServletException {
-	// TODO Auto-generated method stub
-	super.init();
-	projetDBUtil = new ProjetDBUtil(dataSource);
+		super.init();
+		projetDBUtil = new ProjetDBUtil(dataSource);
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("login_page.jsp"); 
+		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		//Get values from field filled by username
+		
+		//check if it's correct (Check_Login)
+		
+			//Check if he's an admin or not
+		
+			//redirect in fonction
 	}
-
 }
