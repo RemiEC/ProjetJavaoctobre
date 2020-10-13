@@ -35,12 +35,20 @@ public class login_servlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//Get values from field filled by username
-		
-		//check if it's correct (Check_Login)
-		
-			//Check if he's an admin or not
-		
-			//redirect in fonction
+		//Get values from fields filled by username
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+				
+		//Check if it's correct (Check_Login)
+		if (projetDBUtil.Check_Login(username, password).get("connexion_check") == true) {
+			//GIVE THE VALUE OF ADMIN OR NOT INTO THE SERVER SO THAT WE KNOW WHAT TO DISPLAY ON THE USER PAGE
+			//response.sendRedirect("/user_page");
+		}
+		else {
+			String error_message = "Informations incorrectes";
+			request.setAttribute("message_erreur", error_message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login_page.jsp"); 
+			dispatcher.forward(request, response);
+		}
 	}
 }

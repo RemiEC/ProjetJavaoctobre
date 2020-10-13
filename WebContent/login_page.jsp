@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>Web Student Tracker</title>
+<title>TODO</title>
 
 </head>
 
@@ -18,8 +18,13 @@
 		<!-- On met table pour indiquer qu'on veut un tableau -->
 		<!-- La balise tr indique une ligne du tableau, ainsi ici chaque ligne contient un label et une case input -->
 		<!-- Enfin la balise td indique une cellule du tableau. Ce qu'il y a entre deux balises td est donc le contenu d'une cellule -->
-		<form action="login_servlet" method="post"> 
+		<form action="login" method="post"> 
 			<table>
+				<tr>
+					<td> </td>
+					<td> <span style=color:red> ${message_erreur} </span> </td>
+				</tr>
+				
 				<tr>
 					<td> Username : </td>
 					<td> <input type="text" name="username" /> </td>
