@@ -1,8 +1,8 @@
 <Context>
-<Resource name="jdbc/projetdb"
+<Resource name="jdbc/Project1_Web_Dynamic_App_DB"
 auth="Container" type="javax.sql.DataSource"
 driverClassName="com.mysql.cj.jdbc.Driver"
 maxActive="20" maxIdle="5" maxWait="10000"
 username="root" password="root"
-url="jdbc:mysql://localhost:3306/projetjava?useSSL=false"/>
+url="jdbc:mysql://localhost:3306/Project1_Web_Dynamic_App_DB?useSSL=false"/>
 </Context>

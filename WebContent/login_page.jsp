@@ -27,7 +27,7 @@
 				
 				<tr>
 					<td> Username : </td>
-					<td> <input type="text" name="username" /> </td>
+					<td> <input type="text" name="username" value="${username_cookie}" /> </td>
 				</tr>
 					
 				<tr>

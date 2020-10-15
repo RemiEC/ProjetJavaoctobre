@@ -32,14 +32,21 @@ public class ProjetDBUtil {
 		{
 			myConn = dataSource.getConnection();
 			myStmt= myConn.createStatement();
-			String sql= "select * from XXXXXXXXX"; 
+			String sql= "SELECT * FROM Project1_Web_Dynamic_App_DB.user_info;"; 
 			myRs = myStmt.executeQuery(sql);
 			
 			while(myRs.next())
 			{
-				if (username == myRs.getString("username") && password == myRs.getString("password")) {
+				//Get values from the database
+				String username_in_DB = myRs.getString("username");
+				String password_in_DB = myRs.getString("password");
+				String admin_in_DB = myRs.getString("admin");
+				
+				//compare it with the values entered by the user
+				//I used the equal function because the "==" operator did not work
+				if (username.equals(username_in_DB) && password.equals(password_in_DB)) {
 					dic.replace("connexion_check", true);
-					if (myRs.getString("admin") == "1") {
+					if (admin_in_DB.equals("1")) {
 						dic.replace("admin", true);
 					}
 				}
