@@ -3,6 +3,7 @@ package com.RemiVincent.web;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,9 +66,43 @@ public class ProjetDBUtil {
 		}
 	}
 	
+	public ArrayList<Todo> Get_Todo (){
+		
+		Connection myConn=null; 
+		Statement myStmt = null;
+		ResultSet myRs= null; 
+		ArrayList<Todo> list_Todos = new ArrayList<Todo>();
+		
+		try 
+		{
+			myConn = dataSource.getConnection();
+			myStmt= myConn.createStatement();
+			String sql= "SELECT * FROM Project1_Web_Dynamic_App_DB.todo;"; 
+			myRs = myStmt.executeQuery(sql);
+			
+			while(myRs.next())
+			{
+				//Get values from the database
+				int id = myRs.getInt("idtodo");
+				String text = myRs.getString("texttodo");
+				list_Todos.add(new Todo(id,text));
+				
+			}
+			return list_Todos; 
+		} 
+		
+		catch (Exception e) {
+			System.out.println(e.getMessage()); 
+			return null;
+		}
+		
+		finally
+		{
+			close(myConn,myStmt,myRs);
+		}
+	}
 	
-	
-	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
+ 	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
 		try
 		{
 			if(myStmt!=null)
