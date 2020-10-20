@@ -1,6 +1,7 @@
 package com.RemiVincent.web;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -102,7 +103,72 @@ public class ProjetDBUtil {
 		}
 	}
 	
- 	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
+	public void Delete_Todo(int Todo_id) {
+		
+		Connection myConn=null;
+		PreparedStatement myStmt = null; 
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "delete from Project1_Web_Dynamic_App_DB.todo where idtodo=?";
+			myStmt = myConn.prepareStatement(sql);
+			
+			myStmt.setInt(1,Todo_id); 
+			
+			myStmt.execute();
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage()); 
+		}
+		
+		finally { 
+			close(myConn,myStmt,null);
+		} 
+	}
+ 	
+	public void Add_Todo(String description) {
+		Connection myConn=null;
+		PreparedStatement myStmt = null; 
+		try {
+			myConn = dataSource.getConnection();
+			String query = "insert into Project1_Web_Dynamic_App_DB.todo (texttodo) values (?);";
+			myStmt = myConn.prepareStatement(query);
+			
+			myStmt.setString(1, description);
+			
+			myStmt.execute();	
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage()); 
+		}
+		
+		finally { 
+			close(myConn,myStmt,null);
+		} 
+	}
+
+	public void Edit_Todo(int Todo_id, String new_description) {
+		Connection myConn=null;
+		PreparedStatement myStmt = null; 
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "update Project1_Web_Dynamic_App_DB.todo set texttodo=? where idtodo=?";
+			myStmt = myConn.prepareStatement(sql);
+			
+			myStmt.setString(1, new_description); 
+			myStmt.setInt(2, Todo_id); 
+			
+			myStmt.execute();
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage()); 
+		}
+		
+		finally { 
+			close(myConn,myStmt,null);
+		} 
+	}
+	
+	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
 		try
 		{
 			if(myStmt!=null)
