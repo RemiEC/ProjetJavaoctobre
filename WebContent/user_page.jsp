@@ -11,24 +11,34 @@
 
 <body>
 
+<a href = "logout">Logout</a>
+<br>
 
 <h1>Welcome ${sessionScope.username_session}</h1>
 <br>
+
+<c:if test = "${sessionScope.admin_bool_session == true}">
+	<form action="userPage" method="post">
+	<input type="text" name="text_todo"/>
+	<input type="submit" value="Add Todo" name="Add_todo_button"/>
+	</form>
+</c:if>
+
+<br>
+
 <h3>You can find here the latest version of the Todo list</h3>
 <br>
 
-<form action="userPage" method="post">
-<input type="text" name="text_todo"/>
-<input type="submit" value="Add Todo" name="Add_todo_button"/>
-</form>
-
 <c:forEach var = "temp_todo" items="${list_todo}">
-	<c:url var="EditLink" value= "edit_todo">
+	
+	<c:url var="EditLink" value= "editTodo">
 		<c:param name="TodoId" value="${temp_todo.id}"/>
 	</c:url>
-	<c:url var="DeleteLink" value= "userPage">
+	
+	<c:url var="DeleteLink" value= "DeleteTodo">
 		<c:param name="TodoId" value="${temp_todo.id}"/>
 	</c:url>
+	
 	<ul>	
 		<li>
 			<div>

@@ -168,6 +168,40 @@ public class ProjetDBUtil {
 		} 
 	}
 	
+	public Todo Fetch_Todo(int TodoId) {
+		Connection myConn=null; 
+		Statement myStmt = null;
+		ResultSet myRs= null; 
+		Todo todo = null;
+		
+		try 
+		{
+			myConn = dataSource.getConnection();
+			myStmt= myConn.createStatement();
+			String sql= "SELECT * FROM Project1_Web_Dynamic_App_DB.todo where idtodo="+TodoId+";"; 
+			myRs = myStmt.executeQuery(sql);
+			
+			while(myRs.next())
+			{
+				//Get values from the database
+				int id = myRs.getInt("idtodo");
+				String text = myRs.getString("texttodo");
+				todo = new Todo(id,text);
+			}
+			return todo; 
+		} 
+		
+		catch (Exception e) {
+			System.out.println(e.getMessage()); 
+			return null;
+		}
+		
+		finally
+		{
+			close(myConn,myStmt,myRs);
+		}
+	}
+	
 	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
 		try
 		{
