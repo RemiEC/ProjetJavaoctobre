@@ -26,7 +26,7 @@
 
 <br>
 
-<h3>You can find here the latest version of the Todo list</h3>
+<h3>You can find the latest version of the Todo list</h3>
 <br>
 
 <c:forEach var = "temp_todo" items="${list_todo}">
