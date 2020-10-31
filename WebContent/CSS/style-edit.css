@@ -1,0 +1,38 @@
+html, body{ 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	text-align:center;
+	margin:0px;
+	
+}
+
+
+header{
+	display: inline-block;
+	background-color:grey;
+	width:100%;
+	color:white;
+	height:50px;
+	text-align:start;
+	padding-left:15px;
+	font-size: 20;
+	font-weight:bold;
+	padding-top: 25px;
+}
+
+header a {
+	position : absolute;
+	color: white;
+	right:15px;
+}
+
+textarea {
+  width: 800px;
+  height: 100px;
+}
+
+input{
+	position:absolute;
+	left:47%;
+	width:6%;
+	top:400px;
+}

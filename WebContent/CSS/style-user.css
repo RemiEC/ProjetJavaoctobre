@@ -1,0 +1,45 @@
+html, body{ 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	text-align:center;
+	margin:0px;
+	
+}
+
+
+header{
+	display: inline-block;
+	background-color:grey;
+	width:100%;
+	color:white;
+	height:50px;
+	text-align:start;
+	padding-left:15px;
+	font-size: 20;
+	font-weight:bold;
+	padding-top: 25px;
+}
+
+header a {
+	position : absolute;
+	color: white;
+	right:15px;
+}
+
+textarea {
+  width: 800px;
+  height: 100px;
+}
+
+.Todo_Block{
+	margin:15px;
+	width : 40%;
+	display: inline-block;
+	border: 2px solid black;
+	border-radius:25px;
+	padding-bottom:15px;
+}
+.Todo_lien {
+	position:relative;
+	left:11px;
+
+}

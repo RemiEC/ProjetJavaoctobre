@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link href="CSS/style.css" rel="stylesheet" type="text/css">
+<link href="CSS/style-edit.css" rel="stylesheet" type="text/css">
 <html>
 <head>
 
@@ -8,24 +8,27 @@
 
 </head>
 
+<header>
+
+Welcome ${sessionScope.username_session}
+<a href = "logout">Click to logout</a>
+
+</header>
+<br>
+<br>
+<br>
 <body>
 
-	<h3> Edit a todo </h3>
+	<h2> Edit Todo number ${todo.getId()} </h2>
 	<br>
 	<br>
-	<h4> TODO number ${todo.getId()} </h4>
+	<label>Description: </label>
+	<br>
+	<br>
 		<form action="editTodo" method = "post"> 
-			<table>
-				<tr>
-				<td><label>Description: </label> </td>
-				<td><input type="text" name="text_todo" value="${todo.getText()}"/></td>
-				</tr>
-				
-				<tr>
-				<td><label></label> </td>
-				<td><input type="submit" value = "Save"/></td>
-				</tr>
-			</table>
+				 
+				<textarea name="text_todo">${todo.getText()}</textarea>
+				<input type="submit" value = "Save"/>
 		</form>
 
 

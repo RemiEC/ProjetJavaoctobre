@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link href="CSS/style.css" rel="stylesheet" type="text/css">
+<link href="CSS/style-login.css" rel="stylesheet" type="text/css">
 
 <html>
 <head>
@@ -21,17 +21,11 @@
 		<!-- Enfin la balise td indique une cellule du tableau. Ce qu'il y a entre deux balises td est donc le contenu d'une cellule -->
 		<p id="message_erreur">${message_erreur} </p>
 		<form action="login" method="post"> 
-			<table>		
-				<tr>
-					<td class="align_left"> Username : </td>
-					<td> <input type="text" class="align_right" name="username" value="${username_cookie}" /> </td>
-				</tr>
+					<p class="align_left"> Username : </p>
+					<p> <input type="text" class="align_right" name="username" value="${username_cookie}" /> </p>
 					
-				<tr>
-					<td class = "align_left"> Password : </td>
-					<td> <input type="password" class="align_right" name="password" /> </td>
-				</tr>		
-			</table>
+					<p class = "align_left"> Password : </p>
+					<p> <input type="password" class="align_right" name="password" /> </p>	
 			<br>
 			<input type="submit" value="Sign in" name="button"/>
 		</form>

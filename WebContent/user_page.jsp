@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="CSS/style.css" rel="stylesheet" type="text/css">
+<link href="CSS/style-user.css" rel="stylesheet" type="text/css">
 <html>
 <head>
 
@@ -10,16 +10,18 @@
 </head>
 
 <body>
+<header>
 
-<a href = "logout">Logout</a>
+Welcome ${sessionScope.username_session}
+<a href = "logout">Click to logout</a>
+
+</header>
 <br>
-
-<h1>Welcome ${sessionScope.username_session}</h1>
 <br>
-
+<br>
 <c:if test = "${sessionScope.admin_bool_session == true}">
 	<form action="userPage" method="post">
-	<input type="text" name="text_todo"/>
+	<textarea name="text_todo"></textarea>
 	<input type="submit" value="Add Todo" name="Add_todo_button"/>
 	</form>
 </c:if>
@@ -30,6 +32,7 @@
 <br>
 
 <c:forEach var = "temp_todo" items="${list_todo}">
+<div class="Todo_Block">
 	
 	<c:url var="EditLink" value= "editTodo">
 		<c:param name="TodoId" value="${temp_todo.id}"/>
@@ -39,24 +42,19 @@
 		<c:param name="TodoId" value="${temp_todo.id}"/>
 	</c:url>
 	
-	<ul>	
-		<li>
-			<div>
+			
 			<h4> ${temp_todo.id} </h4>
-			<p> ${temp_todo.text}</p>
+			 ${temp_todo.text}
 			<br>
+			<div class="Todo_lien">
 			<c:if test = "${sessionScope.admin_bool_session == true}">
 				<p><a href = "${EditLink}">Edit</a> | <a href="${DeleteLink}">Delete</a></p>
 			</c:if>
 			</div>
-		</li>
 		
-	</ul>
-	<br>
-	<br>
-	<br>
+	</div>
 </c:forEach>
-	
+
 
 </body>
 </html>
